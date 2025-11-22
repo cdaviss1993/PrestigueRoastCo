@@ -1,8 +1,29 @@
+import { Link } from 'react-router-dom';
+import './Home.css';
+import bg from '../assets/imgs/PrestigeHomeBackground.png';
+
 export default function Home() {
   return (
-    <div className="bg-black text-white min-h-screen flex items-center justify-center">
-      <h1 className="text-5xl font-serif text-gold">Welcome to the Home Page</h1>
-      <p className="mt-4 text-xl">Discover our exclusive coffee blends and enjoy a premium roasting experience.</p>
-    </div>
+    <main
+      className="home-bg"
+      style={{
+        backgroundImage: `url(${bg})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        minHeight: '100vh'
+      }}
+      aria-label="Prestige Roast Co. hero"
+    >
+      <div className="home-content">
+        <h1 className="home-title">Welcome to Prestige Roast Co.</h1>
+        <p className="home-desc">
+          Discover our exclusive coffee blends and enjoy a premium roasting experience.
+        </p>
+        <div className="home-cta">
+          <Link to="/shop" className="cta-btn" aria-label="Shop now">Shop Now</Link>
+        </div>
+      </div>
+    </main>
   );
 }

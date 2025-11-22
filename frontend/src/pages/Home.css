@@ -1,0 +1,85 @@
+.home-bg {
+  position: relative;
+  display: flex;
+  align-items: flex-start; /* moved from center so we can push the box down */
+  justify-content: center;
+  min-height: 100vh;
+  padding: 9rem 2rem 2rem; /* decreased from 10rem to move .home-content up slightly */
+  box-sizing: border-box;
+  background-color: #5c3b2a; /* fallback */
+}
+
+/* dark warm overlay so text is readable while letting background show through */
+.home-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(75,46,25,0.55), rgba(166,124,82,0.45));
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ensure content sits above the overlay */
+.home-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 980px;
+  background: rgba(255,255,255,0.94);
+  padding: 2.5rem 3rem;
+  border-radius: 18px;
+  box-shadow: 0 14px 40px rgba(39, 23, 15, 0.25);
+  text-align: center;
+  backdrop-filter: blur(4px);
+  margin-top: 3rem; /* reduced from 3.5rem so the box sits slightly higher */
+}
+
+/* Title & copy */
+.home-title {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-family: 'Montserrat', serif;
+  color: #4b2e19;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.home-desc {
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  color: #6e4c2b;
+  margin-bottom: 1.5rem;
+}
+
+/* CTA */
+.home-cta { display:flex; justify-content:center; }
+
+.cta-btn {
+  display:inline-block;
+  background:#4b2e19;
+  color:#fff;
+  padding:0.7rem 1.35rem;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+  transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+  box-shadow: 0 6px 18px rgba(75,46,25,0.18);
+}
+
+.cta-btn:hover { transform:translateY(-3px); box-shadow:0 12px 30px rgba(75,46,25,0.22); }
+.cta-btn:focus {
+  outline: 3px solid rgba(255,215,0,0.18);
+  outline-offset: 3px;
+}
+
+/* Responsive tweaks: reduce top padding on small screens so content doesn't get pushed off */
+@media (max-width: 900px) {
+  .home-bg { padding: 7.5rem 1.5rem 2rem; } /* slight reduction */
+  .home-content { padding: 2rem; max-width: 760px; margin-top: 2.25rem; }
+}
+@media (max-width: 600px) {
+  .home-bg { padding: 5.5rem 1rem 1.25rem; } /* slight reduction */
+  .home-content { padding: 1.25rem; border-radius: 12px; margin: 1rem; margin-top: 1.25rem; }
+  .home-title { font-size: 1.6rem; }
+  .home-desc { font-size: 1rem; }
+  .cta-btn { padding: 0.6rem 1rem; }
+}

@@ -1,0 +1,89 @@
+/* site-wide navbar height variable */
+:root {
+  --navbar-height: 72px;
+}
+
+/* make navbar fixed and keep it above content */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* keep items left-aligned so we can position links absolutely */
+  background: linear-gradient(90deg, #4b2e19 0%, #a67c52 100%);
+  padding: 0 2rem;
+  box-shadow: 0 2px 8px rgba(75, 46, 25, 0.1);
+  font-family: 'Montserrat', sans-serif;
+  z-index: 1100;
+}
+
+/* ensure page content isn't hidden under the fixed navbar */
+body {
+  padding-top: var(--navbar-height);
+  padding-bottom: var(--navbar-height); /* ensure content isn't hidden behind fixed footer */
+}
+
+/* move the logo slightly right and keep it vertically centered */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  margin-left: 2.25rem; /* <-- moves logo right toward the marked area */
+  z-index: 1110;
+}
+
+/* set a compact logo size */
+.logo-img {
+  height: 70px;     /* decreased size */
+  width: auto;
+  object-fit: contain;
+  position: center;
+}
+
+/* center the links horizontally regardless of logo size */
+.navbar-links {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  z-index: 1105;
+}
+
+.navbar-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.navbar-links a:hover {
+  color: #ffd700;
+}
+
+/* keep actions to the right */
+.navbar-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 1rem;
+  z-index: 1110;
+}
+
+.cart-btn, .login-btn {
+  background: #fff;
+  color: #4b2e19;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cart-btn:hover, .login-btn:hover {
+  background: #ffd700;
+  color: #4b2e19;
+}
